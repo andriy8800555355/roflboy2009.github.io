@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neomorphism Design</title>
+    <style>
+        body {
+            background-color: #2d2d44;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .neomorph-btn, .neomorph-input {
+            background: #2d2d44;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px #1b1b28, -5px -5px 15px #3f3f60;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .neomorph-btn:hover, .neomorph-input:focus {
+            box-shadow: inset 5px 5px 15px #1b1b28, inset -5px -5px 15px #3f3f60;
+            outline: none;
+        }
+
+        .neomorph-input {
+            padding: 10px;
+            width: 200px;
+            box-sizing: border-box;
+        }
+
+        .neomorph-btn:active {
+            box-shadow: inset 5px 5px 15px #1b1b28, inset -5px -5px 15px #3f3f60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Neomorphism Design</h1>
+        <button class="neomorph-btn" onclick="buttonClick()">Click Me!</button>
+        <input type="text" class="neomorph-input" placeholder="Enter text...">
+    </div>
+    <script>
+        function buttonClick() {
+            alert("Button clicked!");
+        }
+    </script>
+</body>
+</html>
