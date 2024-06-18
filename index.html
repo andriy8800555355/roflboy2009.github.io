@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neomorphism Design</title>
+    <title>Welcome to my page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+IS:wght@100;400&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #1a1a2e; /* Darker background */
+            background-color: #0d0d0d; /* Darker background */
             color: #fff;
             font-family: Arial, sans-serif;
             display: flex;
@@ -14,54 +17,134 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden; /* Prevent scrolling */
+            flex-direction: column; /* Stack items vertically */
         }
 
-        .container {
-            text-align: center;
+        .neon-text {
+            font-size: 48px;
+            font-weight: bold;
+            color: #9b59b6; /* Neon purple color */
+            text-shadow: 
+                0 0 5px #9b59b6, 
+                0 0 10px #9b59b6, 
+                0 0 20px #9b59b6, 
+                0 0 40px #ff00ff, 
+                0 0 80px #ff00ff, 
+                0 0 100px #ff00ff;
+            position: absolute;
+            opacity: 0;
+            animation: fadeIn 2s forwards, moveToCorner 2s 2s forwards; /* Start immediately */
+            -webkit-text-stroke: 1px #ffffff; /* Add stroke to the text */
+            letter-spacing: -6px; /* Reduce spacing between letters */
         }
 
-        h1 {
-            margin-bottom: 20px;
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
-        .neomorph-btn, .neomorph-input {
-            background: #2d2d44;
-            border-radius: 10px;
-            box-shadow: 5px 5px 15px #141428, -5px -5px 15px #3f3f60;
-            border: none;
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 10px 0;
-            transition: all 0.3s ease;
+        @keyframes moveToCorner {
+            0% {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            100% {
+                top: 10px;
+                left: 10px;
+                transform: translate(0, 0);
+            }
         }
 
-        .neomorph-btn:hover, .neomorph-input:focus {
-            box-shadow: inset 5px 5px 15px #141428, inset -5px -5px 15px #3f3f60;
-            outline: none;
+        .neon-letter {
+            display: inline-block;
+            animation: flicker 3s infinite;
         }
 
-        .neomorph-input {
-            padding: 10px;
-            width: 200px;
-            box-sizing: border-box;
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                opacity: 1;
+            }
+            20%, 24%, 55% {
+                opacity: 0.3;
+            }
         }
 
-        .neomorph-btn:active {
-            box-shadow: inset 5px 5px 15px #141428, inset -5px -5px 15px #3f3f60;
+        .welcome-text {
+            font-family: 'Playwrite IS', sans-serif; /* Use Playwrite IS font */
+            font-size: 24px;
+            font-weight: 400; /* Regular weight */
+            color: #ffffff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            white-space: nowrap; /* Prevent text wrapping */
+            overflow: hidden;
+            border-right: .15em solid #ffffff; /* Cursor effect */
+            animation: fadeInText 2s 4s forwards, typing 4s steps(30, end) 4s forwards, blink-caret .75s step-end infinite;
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 15.5ch; } /* Adjust width to match the length of the text */
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #ffffff; }
+        }
+
+        .welcome-text.finished {
+            border-right: none;
+        }
+
+        .scroll-down-arrow {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            opacity: 0;
+            animation: fadeInArrow 1s 8s forwards, moveUpDown 2s 9s infinite;
+        }
+
+        @keyframes fadeInArrow {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes moveUpDown {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Neomorphism Design</h1>
-        <button class="neomorph-btn" onclick="buttonClick()">Click Me!</button>
-        <input type="text" class="neomorph-input" placeholder="Enter text...">
+    <div class="neon-text">
+        R<span class="neon-letter">o</span>
+        <span class="neon-letter">f</span>
+        <span class="neon-letter">l</span>
+        <span class="neon-letter">b</span>
+        <span class="neon-letter">o</span>
+        <span class="neon-letter">y</span>
     </div>
+    <div class="welcome-text">Welcome to my site!</div>
+    <div class="scroll-down-arrow">↓</div>
+
     <script>
-        function buttonClick() {
-            alert("Button clicked!");
-        }
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                document.querySelector('.welcome-text').classList.add('finished');
+            }, 8000); // 4s delay for fadeInText + 4s delay for typing
+        });
     </script>
 </body>
 </html>
